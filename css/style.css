@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Secular+One&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +12,7 @@ div {
 .layout {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 4% auto 20%;
+  grid-template-rows: 4% auto 14%;
   grid-template-areas:
     "header"
     "main"
@@ -21,10 +21,8 @@ div {
 .header {
   grid-area: header;
 }
-.main {
-  grid-area: main;
-}
 .footer {
+  /* background-color: #90D4C5; */
   grid-area: footer;
 }
 .header {
@@ -45,27 +43,30 @@ div {
   color: #f5f5f4;
 }
 .main {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   width: 100%;
   height: auto;
-  /* position: relative; */
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "main-image"
+    "card-item"
+    "client-container";
+  grid-area: main;
 }
-.main-text {
-  display: flex;
-  top: 0;
-  width: 100%;
-  height: 100%;
+.main-image {
+  /* display: flex; */
   justify-content: center;
-  align-items: center;
-  position: absolute;
-  color: #f5f5f4;
+  background-image: url("../images/desktop/half-orange.jpg");
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  grid-area: main-image;
 }
 .main img {
-  position: relative;
   width: 100%;
   height: auto;
-  object-fit: cover;
 }
 .card-item {
   display: grid;
@@ -75,28 +76,43 @@ div {
     "card-a card-b"
     "card-c card-d"
     "card-e card-f";
-    color: #f5f5f4;
+  color: #f5f5f4;
+  grid-area: card-item;
+}
+@media only screen and (max-width: 850px) {
+  .card-item {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas:
+      "card-b"
+      "card-a"
+      "card-c"
+      "card-d"
+      "card-e"
+      "card-f";
+  }
 }
 .card-a {
   display: flex;
   flex-direction: column;
   justify-content: center;
   grid-area: card-a;
-  padding: 6em 6em;
+  padding: 10%;
 }
 .card-a h1 {
-  font-family: 'Lilita One', cursive;
+  font-family: "Lilita One", cursive;
   font-size: calc(1.5em + 1vw);
   padding: 1em 3em 1em 0;
   align-self: flex-start;
   color: #21272e;
 }
+
 .card-a p {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
   font-weight: 500;
   font-size: calc(0.5em + 1vw);
   align-self: flex-start;
-  color: #6B728E;
+  color: #6b728e;
 }
 .card-b {
   grid-area: card-b;
@@ -108,22 +124,22 @@ div {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 5em 5em;
+  padding: 10%;
   grid-area: card-d;
 }
 .card-d h1 {
-  font-family: 'Lilita One', cursive;
+  font-family: "Lilita One", cursive;
   font-size: calc(1.5em + 1vw);
   padding: 1em 3em 1em 0;
   align-self: flex-start;
   color: #21272e;
 }
 .card-d p {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
   font-weight: 500;
   font-size: calc(0.5em + 1vw);
   align-self: flex-start;
-  color: #6B728E;
+  color: #6b728e;
 }
 .card-e {
   display: flex;
@@ -132,27 +148,27 @@ div {
   justify-content: flex-end;
   align-items: center;
   padding: 10%;
-  background-image: url('../images/desktop/cherry.jpg');
+  background-image: url("../images/desktop/cherry.jpg");
   background-repeat: no-repeat;
-  background-size: cover; 
-  background-position: center; 
+  background-size: cover;
+  /* background-position: center; */
   grid-area: card-e;
 }
 .card-e h1 {
   top: 70%;
-  font-family: 'Lilita One', cursive;
+  font-family: "Lilita One", cursive;
   font-size: calc(1.5em + 1vw);
   padding: 1em 1em 5% 1em;
   align-self: center;
-  color: #112D28;
+  color: #112d28;
 }
 .card-e p {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
   font-weight: 500;
   font-size: calc(0.5em + 1vw);
   padding: 1em;
   align-self: center;
-  color: #22594F;
+  color: #22594f;
 }
 .card-f {
   display: flex;
@@ -161,25 +177,45 @@ div {
   justify-content: flex-end;
   align-items: center;
   padding: 10%;
-  background-image: url('../images/desktop/orage.jpg');
+  background-image: url("../images/desktop/orage.jpg");
   background-repeat: no-repeat;
-  background-size: cover; 
-  background-position: center; 
+  background-size: cover;
+  background-position: center;
   grid-area: card-f;
 }
 .card-f h1 {
-  top: 70%;
-  font-family: 'Lilita One', cursive;
+  font-family: "Lilita One", cursive;
   font-size: calc(1.5em + 1vw);
   padding: 1em 1em 5% 1em;
   align-self: center;
   color: #013951;
 }
 .card-f p {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
   font-weight: 500;
   font-size: calc(0.5em + 1vw);
   padding: 1em;
   align-self: center;
-  color: #01638D;
+  color: #01638d;
+}
+@media only screen and (max-width: 850px) {
+
+  .card-a, .card-d {
+    justify-content: center;
+    text-align: center;
+    padding: 10%;
+  }
+
+  .card-a h1, .card-d h1 {
+    font-family: "Lilita One", cursive;
+    font-size: calc(2em + 3vw);
+    align-self: center;
+    padding: 1em 0 1em 0;
+    /* align-self: center; */
+  }
+
+  .card-a p, .card-d p {
+    font-size: calc(0.5em + 3vw);
+    align-self: center;
+  }
 }
